@@ -34,7 +34,7 @@ public class HW_3 {
 //        int[] state = minCombo(test2, 100);
 //        int[] result = reconstruct(test2, state);
 //        System.out.println(Arrays.toString(result));
-        //System.out.println(minCombo(test2, 100)[100]);
+//        System.out.println(minCombo(test2, 100)[100]);
 
     }
 
@@ -44,13 +44,12 @@ public class HW_3 {
         }
         int state[] = new int[n + 1];
         state[0] = 0;
-        state[1] = 1;
-        for (int i = 1; i < n + 1; i++) {
+        //state[1] = 1;
+        for (int i = 0; i < n + 1; i++) {
             int min = i;
             for (int j = 0; j < D.length; j++) {
-                int d = i / D[j];
-                for (int k = 1; k <= d; k++) {
-                    min = Math.min(min, k + state[i - k * D[j]]);
+                if (i >= D[j]) {
+                    min = Math.min(min, 1 + state[i - D[j]]);
                 }
             }
             state[i] = min;
